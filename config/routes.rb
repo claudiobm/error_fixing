@@ -1,4 +1,6 @@
 ErrorFixing::Application.routes.draw do
+  resources :tasks
+
   devise_for :users
 
   # The priority is based upon order of creation:
