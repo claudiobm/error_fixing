@@ -1,0 +1,26 @@
+base: &base
+  adapter: mysql
+  username: #{user}
+  password: #{Capistrano::CLI.ui.ask("Enter database local password: ")}
+  host: localhost
+  encoding: utf8
+  reconnect: true
+
+development:
+  database: #{application}_development
+  <<: *base
+
+test:
+  database: #{application}_test
+  <<: *base
+
+production:
+  adapter: mysql
+  database: #{application}_production
+  username: #{user}
+  password: #{Capistrano::CLI.ui.ask("Enter database password: ")}
+  host: localhost
+  encoding: utf8
+  reconnect: true
+  pool: 15
+  timeout: 5000 
